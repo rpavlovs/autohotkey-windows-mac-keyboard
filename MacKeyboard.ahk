@@ -1,24 +1,28 @@
 ;-----------------------------------------
-; Mac keyboard to Windows Key Mappings
+; Mac hotkeys to Windows
 ;=========================================
-
-; --------------------------------------------------------------
-; NOTES
-; --------------------------------------------------------------
-; ! = ALT
-; ^ = CTRL
-; + = SHIFT
-; # = WIN
+;
+; Before using this script:
+; 1) Disable Narrator shortcut key
+; 		- https://superuser.com/questions/473410/disable-narrator-shortcut-key-in-windows-8
+; 2) Disable Win key
+;		- https://support.microsoft.com/en-us/kb/216893
+;
+;
 ;
 
-#NoEnv
-; #Warn
-SetWorkingDir %A_ScriptDir%
+
+#NoEnv 							; Recommended for performance and compatibility with future AutoHotkey releases.
+#Warn 							; Recommended for catching common errors.
+SetWorkingDir %A_ScriptDir%		; Ensures a consistent starting directory.
+SendMode Input 					; Recommended for new scripts due to its superior speed and reliability.
 #InstallKeybdHook
 #SingleInstance force
 SetTitleMatchMode 2
-SendMode Input
 
+^!r::
+    reload
+Return
 
 ; --------------------------------------------------------------
 ; media/function keys all mapped to the right option key
@@ -27,74 +31,71 @@ SendMode Input
 RAlt & F7::Send {Media_Prev}
 RAlt & F8::Send {Media_Play_Pause}
 RAlt & F9::Send {Media_Next}
-F10::Send {Volume_Mute}
-F11::Send {Volume_Down}
-F12::Send {Volume_Up}
-
-; swap left command/windows key with left alt
-;LWin::LAlt
-;LAlt::LWin ; add a semicolon in front of this line if you want to disable the windows key
-
-; Eject Key
-F20::Send {Insert}
-
-; F13-15, standard windows mapping
-F13::Send {PrintScreen}
-F14::Send {ScrollLock}
-F15::Send {Pause}
-
-;F16-19 custom app launchers, see http://www.autohotkey.com/docs/Tutorial.htm for usage info
-F16::Run http://twitter.com
-F17::Run http://tumblr.com
-F18::Run http://www.reddit.com
-F19::Run https://facebook.com
+RAlt & F10::Send {Volume_Mute}
+RAlt & F11::Send {Volume_Down}
+RAlt & F12::Send {Volume_Up}
 
 ; --------------------------------------------------------------
 ; OS X system shortcuts
 ; --------------------------------------------------------------
 
-; Make Ctrl + S work with cmd (windows) key
-#s::Send ^s
+#s::Send ^s ; Save
+#a::Send ^a ; Select
+#c::Send ^c ; CopY
+#v::Send ^v ; Paste
+#x::Send ^x ; Cut
+#o::Send ^o ; Open
+#n::Send ^n ; New
+#f::Send ^f ; Finding
+#z::Send ^z ; WinMinimizeAllUndo
+#y::Send ^y ; Redo
+#t::Send ^t ; New tab
+#w::Send ^w ; close tab
+#+t::Send ^+t ; Reopen tab
 
-; Selecting
-#a::Send ^a
-
-; Copying
-#c::Send ^c
-
-; Pasting
-#v::Send ^v
-
-; Cutting
-#x::Send ^x
-
-; Opening
-#o::Send ^o
-
-; Finding
-#f::Send ^f
-
-; Undo
-#z::Send ^z
-
-; Redo
-#y::Send ^y
-
-; New tab
-#t::Send ^t
-
-; close tab
-#w::Send ^w
+; go to address field
+#l::Send ^l
 
 ; Close windows (cmd + q to Alt + F4)
 #q::Send !{F4}
 
 ; Remap Windows + Tab to Alt + Tab.
-Lwin & Tab::AltTab
-
+LWin & Tab::AltTab
+LWin & `::ShiftAltTab
 ; minimize windows
 #m::WinMinimize,a
 
+; Use cmd + Arrows to simulate Home, End
+#Up::Send ^{Home}
+#Down::Send ^{End}
+#Right::Send {End}
+#Left::Send {Home}
+ 
+#+Up::Send ^+{Home}
+#+Down::Send ^+{End}
+#+Right::Send +{End}
+#+Left::Send +{Home}
+
+; Open in new Tab
+#LButton::Send ^{LButton}
+
+; Ctrl+Enter
+#Enter::Send ^{Enter}
+#+Enter::Send ^+{Enter}
+
+; Disable Windows key
+LWin::
+RWin::
+
+; Start apps with Win+Space
+#Space::LWin
+
+; Ctrl + Alt + Delete
+^!BackSpace::Send {LCtrl}{LAlt}{Delete}
+
+; Delete
+#+BackSpace::Send +{Delete}
+#BackSpace::Send {Delete}
 
 ; --------------------------------------------------------------
 ; Application specific
@@ -110,4 +111,3 @@ Lwin & Tab::AltTab
 #!u::Send ^u
 
 #IfWinActive
-
