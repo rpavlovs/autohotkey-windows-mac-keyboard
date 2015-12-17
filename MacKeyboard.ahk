@@ -55,10 +55,8 @@ RAlt & F12::Send {Volume_Up}
 #y::Send ^y ; Redo
 #t::Send ^t ; New tab
 #w::Send ^w ; Close tab
+#l::Send ^l ; go to address field
 #+t::Send ^+t ; Reopen tab
-
-; go to address field
-#l::Send ^l
 
 ; Close windows (cmd + q to Alt + F4)
 #q::Send !{F4}
@@ -66,6 +64,7 @@ RAlt & F12::Send {Volume_Up}
 ; Remap Windows + Tab to Alt + Tab.
 LWin & Tab::AltTab
 LWin & `::ShiftAltTab
+
 ; minimize windows
 #m::WinMinimize,a
 
@@ -108,10 +107,10 @@ RWin::
 ; Google Chrome
 #IfWinActive, ahk_class Chrome_WidgetWin_1
 
-; Show Web Developer Tools with cmd + alt + i
-#!i::Send {F12}
+	; Show Web Developer Tools with cmd + alt + i
+	#!i::Send {F12}
 
-; Show source code with cmd + alt + u
-#!u::Send ^u
+	; Show source code with cmd + alt + u
+	#!u::Send ^u
 
 #IfWinActive
