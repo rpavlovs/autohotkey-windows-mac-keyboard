@@ -24,24 +24,24 @@ SendMode Input
 ; media/function keys all mapped to the right option key
 ; --------------------------------------------------------------
 
-RAlt & F7::SendInput {Media_Prev}
-RAlt & F8::SendInput {Media_Play_Pause}
-RAlt & F9::SendInput {Media_Next}
-F10::SendInput {Volume_Mute}
-F11::SendInput {Volume_Down}
-F12::SendInput {Volume_Up}
+RAlt & F7::Send {Media_Prev}
+RAlt & F8::Send {Media_Play_Pause}
+RAlt & F9::Send {Media_Next}
+F10::Send {Volume_Mute}
+F11::Send {Volume_Down}
+F12::Send {Volume_Up}
 
 ; swap left command/windows key with left alt
 ;LWin::LAlt
 ;LAlt::LWin ; add a semicolon in front of this line if you want to disable the windows key
 
 ; Eject Key
-F20::SendInput {Insert}
+F20::Send {Insert}
 
 ; F13-15, standard windows mapping
-F13::SendInput {PrintScreen}
-F14::SendInput {ScrollLock}
-F15::SendInput {Pause}
+F13::Send {PrintScreen}
+F14::Send {ScrollLock}
+F15::Send {Pause}
 
 ;F16-19 custom app launchers, see http://www.autohotkey.com/docs/Tutorial.htm for usage info
 F16::Run http://twitter.com
@@ -54,37 +54,37 @@ F19::Run https://facebook.com
 ; --------------------------------------------------------------
 
 ; Make Ctrl + S work with cmd (windows) key
-#s::^s
+#s::Send ^s
 
 ; Selecting
-#a::^a
+#a::Send ^a
 
 ; Copying
-#c::^c
+#c::Send ^c
 
 ; Pasting
-#v::^v
+#v::Send ^v
 
 ; Cutting
-#x::^x
+#x::Send ^x
 
 ; Opening
-#o::^o
+#o::Send ^o
 
 ; Finding
 #f::Send ^f
 
 ; Undo
-#z::^z
+#z::Send ^z
 
 ; Redo
-#y::^y
+#y::Send ^y
 
 ; New tab
-#t::^t
+#t::Send ^t
 
 ; close tab
-#w::^w
+#w::Send ^w
 
 ; Close windows (cmd + q to Alt + F4)
 #q::Send !{F4}
