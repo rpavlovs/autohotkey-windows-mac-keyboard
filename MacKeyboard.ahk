@@ -3,12 +3,16 @@
 ;=========================================
 ;
 ; Before using this script:
+; 
+; 1) Enable UI access
+;		- https://autohotkey.com/board/topic/70449-enable-interaction-with-administrative-programs/
 ; 1) Disable Narrator shortcut key
 ; 		- https://superuser.com/questions/473410/disable-narrator-shortcut-key-in-windows-8
 ; 2) Disable Win key
 ;		- https://support.microsoft.com/en-us/kb/216893
 ;
-;
+; Make shortcut here for automatic startup:
+; 	- C:\Users\[yourusername]\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 ;
 
 
@@ -50,7 +54,7 @@ RAlt & F12::Send {Volume_Up}
 #z::Send ^z ; WinMinimizeAllUndo
 #y::Send ^y ; Redo
 #t::Send ^t ; New tab
-#w::Send ^w ; close tab
+#w::Send ^w ; Close tab
 #+t::Send ^+t ; Reopen tab
 
 ; go to address field
