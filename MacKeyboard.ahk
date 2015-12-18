@@ -56,7 +56,9 @@ RAlt & F12::Send {Volume_Up}
 #t::Send ^t ; New tab
 #w::Send ^w ; Close tab
 #l::Send ^l ; go to address field
+#+n::Send ^+n ; Special New
 #+t::Send ^+t ; Reopen tab
+#+s::Send ^+s ; Save as
 
 ; Close windows (cmd + q to Alt + F4)
 #q::Send !{F4}
