@@ -45,7 +45,7 @@ RAlt & F12::Send {Volume_Up}
 
 #s::Send ^s ; Save
 #a::Send ^a ; Select
-#c::Send ^c ; CopY
+#c::Send ^c ; Copy
 #v::Send ^v ; Paste
 #x::Send ^x ; Cut
 #o::Send ^o ; Open
@@ -59,6 +59,8 @@ RAlt & F12::Send {Volume_Up}
 #+n::Send ^+n ; Special New
 #+t::Send ^+t ; Reopen tab
 #+s::Send ^+s ; Save as
+#+b::Send ^+b ; Build
+#+f::Send ^+f ; Special Find
 
 ; Close windows (cmd + q to Alt + F4)
 #q::Send !{F4}
@@ -102,6 +104,14 @@ RWin::
 #+BackSpace::Send +{Delete}
 #BackSpace::Send {Delete}
 
+#b::^b ; Bold
+#i::^i ; Italic
+#u::^u ; Underline
+#k::^k ; Link from selection
+
+; Sublime
+#d::^d
+
 ; --------------------------------------------------------------
 ; Application specific
 ; --------------------------------------------------------------
@@ -114,5 +124,16 @@ RWin::
 
 	; Show source code with cmd + alt + u
 	#!u::Send ^u
+
+#IfWinActive
+
+; Outlook
+#IfWinActive, ahk_class rctrl_renwnd32
+
+	
+	#Enter::Send ^{Enter} ; Send	
+	#r::Send ^r           ; Reply
+	#+r::Send ^r          ; Reply All
+	#f::Send ^f           ; Forward
 
 #IfWinActive
