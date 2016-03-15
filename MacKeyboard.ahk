@@ -55,7 +55,6 @@ RAlt & F12::Send {Volume_Up}
 #y::Send ^y ; Redo
 #t::Send ^t ; New tab
 #w::Send ^w ; Close tab
-#l::Send ^l ; go to address field
 #+n::Send ^+n ; Special New
 #+t::Send ^+t ; Reopen tab
 #+s::Send ^+s ; Save as
@@ -97,6 +96,22 @@ RWin::
 ; Start apps with Win+Space
 #Space::LWin
 
+; Fix Logout issue
+#l::Send #l
+
+LWin & WheelUp::Send ^{WheelUp}
+LWin & WheelDown::Send ^{WheelDown}
+
+; Wheel over taskbar: increase/decrease volume.
+#If MouseIsOver("ahk_class Shell_TrayWnd")
+WheelUp::Send {Volume_Up} 
+WheelDown::Send {Volume_Down}
+
+MouseIsOver(WinTitle) {
+    MouseGetPos,,, Win
+    return WinExist(WinTitle . " ahk_id " . Win)
+}
+
 ; Ctrl + Alt + Delete
 ^!BackSpace::Send {LCtrl}{LAlt}{Delete}
 
@@ -110,7 +125,8 @@ RWin::
 #k::^k ; Link from selection
 
 ; Sublime
-#d::^d
+#d::Send ^d
+#+p::Send ^+p
 
 ; --------------------------------------------------------------
 ; Application specific
